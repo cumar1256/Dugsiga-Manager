@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f7fb" />
+  <meta name="description" content="Dugsiga Manager — a simple school administration dashboard." />
+  <title>Dugsiga Manager — School administration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="management.css" />
+  <link rel="stylesheet" href="advanced-ui.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script defer src="js/store.js"></script>
+  <script defer src="js/advanced.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/navigation-scroll.js"></script>
+</head>
+<body>
+  <section id="login-screen" class="login-screen">
+    <div class="login-art"><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div><div class="art-mark"><i data-feather="book-open"></i></div><div class="art-copy"><span class="eyebrow">MAAMULKA DUGSIGA</span><h2>A brighter day<br />starts at school.</h2><p>One calm place to keep your school running smoothly.</p><div class="art-dots"><b></b><b></b><b></b></div></div><div class="art-note"><span class="note-icon"><i data-feather="check"></i></span><span><strong>All caught up</strong><small>Attendance saved for today</small></span></div></div>
+    <div class="login-panel"><a class="brand" href="#"><span class="brand-symbol"><i data-feather="layers"></i></span><span>Dugsiga<span class="brand-light"> Manager</span></span></a><div class="login-form-wrap"><span class="eyebrow">WELCOME BACK</span><h1>Sign in to your school</h1><p class="muted">Manage your school day, all in one place.</p><form id="login-form"><label for="username">Username</label><div class="input-icon"><i data-feather="user"></i><input id="username" name="username" autocomplete="username" placeholder="Enter your username" required /></div><label for="password">Password</label><div class="input-icon"><i data-feather="lock"></i><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required /></div><div id="login-error" class="form-error" role="alert"></div><button class="btn btn-primary btn-wide" type="submit">Sign in <i data-feather="arrow-right"></i></button></form><div class="login-hint"><i data-feather="info"></i><span>Demo access: <strong>admin</strong> / <strong>123</strong></span></div><a class="teacher-login-link" href="teacher-login.html">Teacher sign in <i data-feather="arrow-up-right"></i></a><p class="login-foot">© 2026 Dugsiga Manager <span>·</span> Built for better school days</p></div></div>
+  </section>
+
+  <div id="app-layout" class="app-layout hidden">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand side-brand" href="#dashboard"><span class="brand-symbol"><i data-feather="layers"></i></span><span>Dugsiga<span class="brand-light"> Manager</span></span></a>
+      <div class="school-switch"><div class="school-avatar">AH</div><div><strong>Al-Hikma Academy</strong><small>Maamulka Dugsiga</small></div><i data-feather="chevron-down"></i></div>
+      <div class="nav-label">OVERVIEW</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="dashboard"><i data-feather="grid"></i><span>Dashboard</span></button>
+        <button class="nav-item" data-view="students"><i data-feather="users"></i><span>Students</span><span class="nav-count" id="student-nav-count">7</span></button>
+        <button class="nav-item" data-view="attendance"><i data-feather="check-square"></i><span>Attendance</span></button>
+        <button class="nav-item" data-view="attendance-history"><i data-feather="clock"></i><span>Attendance History</span></button>
+        <button class="nav-item" data-view="fees"><i data-feather="credit-card"></i><span>Fees</span></button>
+        <button class="nav-item" data-view="reports"><i data-feather="bar-chart-2"></i><span>Reports</span></button>
+        <button class="nav-item" data-view="academic-years"><i data-feather="calendar"></i><span>Academic years</span></button>
+        <button class="nav-item" data-view="promotion"><i data-feather="trending-up"></i><span>Promotion</span></button>
+      </nav>
+      <div class="nav-label management-label">MANAGEMENT</div>
+      <nav class="side-nav" aria-label="Class and teacher management">
+        <button class="nav-item" data-view="classes"><i data-feather="book-open"></i><span>Classes</span></button>
+        <button class="nav-item" data-view="teachers"><i data-feather="user-check"></i><span>Teachers</span></button>
+        <button class="nav-item" data-view="subjects"><i data-feather="book"></i><span>Subjects</span></button>
+      </nav>
+      <div class="sidebar-bottom"><div class="help-card"><div class="help-icon"><i data-feather="life-buoy"></i></div><strong>Need a hand?</strong><p>We're here to help you get the most from your dashboard.</p><a href="mailto:support@dugsigamanager.com">Visit help center <i data-feather="arrow-up-right"></i></a></div><button id="logout-button" class="logout-button"><i data-feather="log-out"></i><span>Sign out</span></button><div class="user-mini"><div class="user-avatar">AM</div><div><strong>Admin Manager</strong><small>School administrator</small></div><i data-feather="more-horizontal"></i></div></div>
+    </aside>
+    <main class="main-shell">
+      <header class="topbar"><button id="mobile-menu" class="icon-button mobile-menu" aria-label="Open menu"><i data-feather="menu"></i></button><div class="breadcrumb"><span>Al-Hikma Academy</span><i data-feather="chevron-right"></i><strong id="breadcrumb-current">Dashboard</strong></div><div class="topbar-actions"><select class="filter-select academic-year-top" id="admin-academic-year" aria-label="Academic year"></select><div class="today-pill"><i data-feather="calendar"></i><span id="topbar-date"></span></div><button class="icon-button notification-button" aria-label="Notifications"><i data-feather="bell"></i><b></b></button><div class="topbar-avatar">AM</div></div></header>
+      <section id="view-root" class="view-root" aria-live="polite"></section>
+    </main>
+  </div>
+  <div id="modal-root"></div>
+  <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
